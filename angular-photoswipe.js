@@ -10,7 +10,7 @@
 (function () {
   'use strict';
 
-  function ngPhotoswipe(angular, Photoswipe) {
+  function ngPhotoswipe(angular, PhotoSwipe, PhotoSwipeUI_Default) {
 
     return angular
       .module('ngPhotoswipe', [])
@@ -111,11 +111,11 @@
   }
 
   if (typeof define === 'function' && define.amd) {
-		define(['angular', 'photoswipe'], ngPhotoswipe);
+		define(['angular', 'photoswipe/dist/photoswipe', 'photoswipe/dist/photoswipe-ui-default'], ngPhotoswipe);
 	} else if (typeof module !== 'undefined' && module && module.exports) {
-		ngPhotoswipe(angular, require('photoswipe'));
+		ngPhotoswipe(angular, require('photoswipe/dist/photoswipe'), require('photoswipe/dist/photoswipe-ui-default'));
 		module.exports = 'ngPhotoswipe';
 	} else {
-		ngPhotoswipe(angular, (typeof global !== 'undefined' ? global : window).Photoswipe);
+		ngPhotoswipe(angular, (typeof global !== 'undefined' ? global : window).PhotoSwipe, (typeof global !== 'undefined' ? global : window).PhotoSwipeUI_Default);
 	}
 })();
